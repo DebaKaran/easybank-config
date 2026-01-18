@@ -11,6 +11,13 @@ cards:
     - (915) 382-1932
 
 eureka:
+  instance:
+    preferIpAddress: true
   client:
     register-with-eureka: true
     fetch-registry: true
+info:
+  app:
+    name: "cards"
+    description: "Eazy Bank Cards Application"
+    version: "1.0.0"
