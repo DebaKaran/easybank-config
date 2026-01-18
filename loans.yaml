@@ -9,3 +9,8 @@ loans:
   onCallSupport:
     - (452) 456-2176
     - (546) 764-893
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
