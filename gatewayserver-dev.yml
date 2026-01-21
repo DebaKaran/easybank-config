@@ -24,4 +24,3 @@ spring:
             - "RewritePath=/eazybank/cards/(?<segment>.*), /${segment}"
       refresh:
         enabled: true
-        interval: 10s
