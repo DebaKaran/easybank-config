@@ -8,8 +8,7 @@ spring:
             - Path=/eazybank/accounts/**
           filters:
             - "RewritePath=/eazybank/accounts/(?<segment>.*), /${segment}"
-            - "AddResponseHeader=Response-Time, #{T(java.time.LocalDateTime).now()}"
-            - "AddResponseHeader=Gateway-Time, #{T(java.time.LocalDateTime).now()}"
+            - "AddResponseHeader=Gateway-Time, #{request.time}"
 
         - id: loans-service
           uri: lb://LOANS
@@ -17,8 +16,7 @@ spring:
             - Path=/eazybank/loans/**
           filters:
             - "RewritePath=/eazybank/loans/(?<segment>.*), /${segment}"
-            - "AddResponseHeader=Response-Time, #{T(java.time.LocalDateTime).now()}"
-            - "AddResponseHeader=Gateway-Time, #{T(java.time.LocalDateTime).now()}"
+            - "AddResponseHeader=Gateway-Time, #{request.time}"
 
         - id: cards-service
           uri: lb://CARDS
@@ -26,7 +24,6 @@ spring:
             - Path=/eazybank/cards/**
           filters:
             - "RewritePath=/eazybank/cards/(?<segment>.*), /${segment}"
-            - "AddResponseHeader=Response-Time, #{T(java.time.LocalDateTime).now()}"
-            - "AddResponseHeader=Gateway-Time, #{T(java.time.LocalDateTime).now()}"
+            - "AddResponseHeader=Gateway-Time, #{request.time}"
       refresh:
         enabled: true
