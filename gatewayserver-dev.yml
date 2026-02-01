@@ -9,18 +9,18 @@ spring:
           filters:
             - "RewritePath=/eazybank/accounts/(?<segment>.*), /${segment}"
 
-        - id: loans-service
-          uri: lb://LOANS
-          predicates:
-            - Path=/eazybank/loans/**
-          filters:
-            - "RewritePath=/eazybank/loans/(?<segment>.*), /${segment}"
+        # - id: loans-service
+        #   uri: lb://LOANS
+        #   predicates:
+        #     - Path=/eazybank/loans/**
+        #   filters:
+        #     - "RewritePath=/eazybank/loans/(?<segment>.*), /${segment}"
 
-        - id: cards-service
-          uri: lb://CARDS
-          predicates:
-            - Path=/eazybank/cards/**
-          filters:
-            - "RewritePath=/eazybank/cards/(?<segment>.*), /${segment}"
+        # - id: cards-service
+        #   uri: lb://CARDS
+        #   predicates:
+        #     - Path=/eazybank/cards/**
+        #   filters:
+        #     - "RewritePath=/eazybank/cards/(?<segment>.*), /${segment}"
       refresh:
         enabled: true
