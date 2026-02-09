@@ -17,6 +17,11 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
 
+spring:
+  cloud:
+    openfeign:
+      circuitbreaker:
+        enabled: true
 info:
   app:
     name: "accounts"
