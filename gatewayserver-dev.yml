@@ -11,6 +11,7 @@ spring:
             - name: CircuitBreaker
               args:
                 name: accounts-gateway-CB
+                fallbackUri: forward:/contactSupport
 
         - id: loans-service
           uri: lb://LOANS
