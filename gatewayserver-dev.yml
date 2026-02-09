@@ -10,7 +10,7 @@ spring:
             - "RewritePath=/eazybank/accounts/(?<segment>.*), /${segment}"
             - name: CircuitBreaker
               args:
-                name: accountsCB
+                name: accounts-gateway-CB
 
         - id: loans-service
           uri: lb://LOANS
@@ -20,7 +20,7 @@ spring:
             - "RewritePath=/eazybank/loans/(?<segment>.*), /${segment}"
             - name: CircuitBreaker
               args:
-                name: loansCB
+                name: loans-gateway-CB
 
         - id: cards-service
           uri: lb://CARDS
@@ -30,6 +30,21 @@ spring:
             - "RewritePath=/eazybank/cards/(?<segment>.*), /${segment}"
             - name: CircuitBreaker
               args:
-                name: cardsCB
+                name: cards-gateway-CB
       refresh:
         enabled: true
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        failure-rate-threshold: 50
+        minimum-number-of-calls: 10
+        sliding-window-size: 20
+        wait-duration-in-open-state: 10s
+    instances:
+      accounts-gateway-CB:
+        base-config: default
+      loans-gateway-CB:
+        base-config: default
+      cards-gateway-CB:
+        base-config: default    
