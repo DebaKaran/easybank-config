@@ -8,6 +8,9 @@ spring:
             - Path=/eazybank/accounts/**
           filters:
             - "RewritePath=/eazybank/accounts/(?<segment>.*), /${segment}"
+            - name: CircuitBreaker
+              args:
+                name: accountsCB
 
         - id: loans-service
           uri: lb://LOANS
@@ -15,6 +18,9 @@ spring:
             - Path=/eazybank/loans/**
           filters:
             - "RewritePath=/eazybank/loans/(?<segment>.*), /${segment}"
+            - name: CircuitBreaker
+              args:
+                name: loansCB
 
         - id: cards-service
           uri: lb://CARDS
@@ -22,5 +28,8 @@ spring:
             - Path=/eazybank/cards/**
           filters:
             - "RewritePath=/eazybank/cards/(?<segment>.*), /${segment}"
+            - name: CircuitBreaker
+              args:
+                name: cardsCB
       refresh:
         enabled: true
