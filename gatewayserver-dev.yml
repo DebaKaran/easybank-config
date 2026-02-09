@@ -42,11 +42,29 @@ resilience4j:
         sliding-window-size: 20
         wait-duration-in-open-state: 10s
         permitted-number-of-calls-in-half-open-state: 2
+
     instances:
       accounts-gateway-CB:
         base-config: default
+
       loans-gateway-CB:
         base-config: default
         permitted-number-of-calls-in-half-open-state: 4
+
       cards-gateway-CB:
-        base-config: default    
+        base-config: default
+
+  timelimiter:
+    configs:
+      default:
+        timeout-duration: 3s
+
+    instances:
+      accounts-gateway-CB:
+        base-config: default
+
+      loans-gateway-CB:
+        base-config: default
+
+      cards-gateway-CB:
+        base-config: default
