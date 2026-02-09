@@ -41,10 +41,12 @@ resilience4j:
         minimum-number-of-calls: 10
         sliding-window-size: 20
         wait-duration-in-open-state: 10s
+        permitted-number-of-calls-in-half-open-state: 2
     instances:
       accounts-gateway-CB:
         base-config: default
       loans-gateway-CB:
         base-config: default
+        permitted-number-of-calls-in-half-open-state: 4
       cards-gateway-CB:
         base-config: default    
