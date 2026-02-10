@@ -12,6 +12,17 @@ spring:
               args:
                 name: accounts-gateway-CB
                 fallbackUri: forward:/contactSupport
+            - name: Retry
+              args:
+                retries: 3
+                methods:
+                  - GET
+                backoff:
+                  firstBackoff: 100ms
+                  maxBackoff: 1000ms
+                  factor: 2
+                  basedOnPreviousValue: true
+              
 
         - id: loans-service
           uri: lb://LOANS
@@ -22,6 +33,16 @@ spring:
             - name: CircuitBreaker
               args:
                 name: loans-gateway-CB
+            - name: Retry
+              args:
+                retries: 3
+                methods:
+                  - GET
+                backoff:
+                  firstBackoff: 100ms
+                  maxBackoff: 1000ms
+                  factor: 2
+                  basedOnPreviousValue: true
 
         - id: cards-service
           uri: lb://CARDS
@@ -32,6 +53,16 @@ spring:
             - name: CircuitBreaker
               args:
                 name: cards-gateway-CB
+            - name: Retry
+              args:
+                retries: 3
+                methods:
+                  - GET
+                backoff:
+                  firstBackoff: 100ms
+                  maxBackoff: 1000ms
+                  factor: 2
+                  basedOnPreviousValue: true
       httpClient:
         connect-timeout: 1000
         response-timeout: 5s
