@@ -32,6 +32,9 @@ spring:
             - name: CircuitBreaker
               args:
                 name: cards-gateway-CB
+      httpClient:
+        connect-timeout: 1000
+        response-timeout: 5s
       refresh:
         enabled: true
 resilience4j:
