@@ -30,9 +30,9 @@ spring:
             - Path=/eazybank/loans/**
           filters:
             - "RewritePath=/eazybank/loans/(?<segment>.*), /${segment}"
-            - name: CircuitBreaker
-              args:
-                name: loans-gateway-CB
+            # - name: CircuitBreaker
+            #   args:
+            #     name: loans-gateway-CB
             - name: Retry
               args:
                 retries: 3
@@ -82,9 +82,9 @@ resilience4j:
       accounts-gateway-CB:
         base-config: default
 
-      loans-gateway-CB:
-        base-config: default
-        permitted-number-of-calls-in-half-open-state: 4
+      # loans-gateway-CB:
+      #   base-config: default
+      #   permitted-number-of-calls-in-half-open-state: 4
 
       cards-gateway-CB:
         base-config: default
