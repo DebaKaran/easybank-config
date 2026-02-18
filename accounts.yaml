@@ -53,11 +53,11 @@ resilience4j:
     # Service-level CB instances
     # -----------------------------
     instances:
-      accounts-loans-cb:
+      loans:
         base-config: default
         wait-duration-in-open-state: 15s   # Loans recovers slower
 
-      accounts-cards-cb:
+      cards:
         base-config: default
         wait-duration-in-open-state: 5s    # Cards recovers faster
 
