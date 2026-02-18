@@ -2,6 +2,16 @@ spring:
   cloud:
     gateway:
       routes:
+        - id: accounts-fetchCustomerDetails
+          uri: lb://ACCOUNTS
+          predicates:
+            - Path=/eazybank/accounts/fetchCustomerDetails
+          filters:
+            - "RewritePath=/eazybank/accounts/(?<segment>.*), /${segment}"
+            - name: CircuitBreaker
+              args:
+                name: accounts-gateway-CB
+                fallbackUri: forward:/contactSupport
         - id: accounts-service
           uri: lb://ACCOUNTS
           predicates:
