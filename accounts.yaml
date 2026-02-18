@@ -43,6 +43,7 @@ resilience4j:
         enable-exponential-backoff: true
         exponential-backoff-multiplier: 2
         retry-exceptions:
+          - feign.FeignException
           - java.io.IOException
           - feign.RetryableException
         ignore-exceptions:
