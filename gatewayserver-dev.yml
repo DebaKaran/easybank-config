@@ -102,7 +102,7 @@ resilience4j:
   timelimiter:
     configs:
       default:
-        timeout-duration: 3s
+        timeout-duration: 10s
 
     instances:
       accounts-gateway-CB:
