@@ -35,6 +35,20 @@ resilience4j:
         sliding-window-size: 20
         permitted-number-of-calls-in-half-open-state: 2
 
+  retry:
+    configs:
+      default:
+        max-attempts: 3        # 1 initial + 2 retries
+        wait-duration: 200ms
+        enable-exponential-backoff: true
+        exponential-backoff-multiplier: 2
+        retry-exceptions:
+          - java.io.IOException
+          - feign.RetryableException
+        ignore-exceptions:
+          - java.lang.IllegalArgumentException
+          - java.lang.NullPointerException
+
     # -----------------------------
     # Service-level CB instances
     # -----------------------------
