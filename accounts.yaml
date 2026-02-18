@@ -61,6 +61,10 @@ resilience4j:
         base-config: default
         wait-duration-in-open-state: 5s    # Cards recovers faster
 
+logging:
+  level:
+    io.github.resilience4j.retry: DEBUG
+    org.springframework.cloud.openfeign: DEBUG
 info:
   app:
     name: "accounts"
